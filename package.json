@@ -2,10 +2,6 @@
   "author": "admin8",
   "name": "postgres-api-0",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
   "dependencies": {
     "hapi": "^17.2.0",
     "pg": "^7.4.1"
