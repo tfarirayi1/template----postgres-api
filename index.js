@@ -8,10 +8,13 @@ const { Client } = require('pg');
 const client = new Client({
 	host: process.env.PGHOST,
 	port: process.env.PGPORT,
-	database: process.env.PGDATABASE,
 	user: process.env.PGUSER,
-	password: process.env.PGPASSWORD
+	password: process.env.PGPASSWORD,
+	database: process.env.PGDATABASE
 })
+
+// reply
+let result
 
 // connect db
 client.connect((err) => {
@@ -26,7 +29,7 @@ client.connect((err) => {
 client.query('select schema_name from information_schema.schemata', (err, res) => {
 	if (err) throw err
 
-	console.log(res)
+	result = res.rows
 	client.end()
 })
 
@@ -42,9 +45,10 @@ server.route({
     path:'/',
     handler: function (request, h) {
 
-        return 'message';
+        return result;
     }
 });
+
 
 // Start the server
 async function start() {
