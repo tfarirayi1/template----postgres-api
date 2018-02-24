@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# run command 'source set-variables.sh'
 # prompt for parameters
 read -p '?user: ' user
 read -p '?database: ' database
